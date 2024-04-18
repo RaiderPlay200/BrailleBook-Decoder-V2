@@ -20,13 +20,13 @@ char val;
 
 String var = "";
 
-int down = 90;
-int up = 68;
-int up2 = 70;
+int down = 87;
+int up = 57;
+int up2 = 55;
 int up3 = 63;
 int up4 = 114;
-int up5 = 114;
-int up6 = 124;
+int up5 = 112;
+int up6 = 128;
 
 
 
