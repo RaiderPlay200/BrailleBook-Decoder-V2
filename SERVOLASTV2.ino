@@ -86,6 +86,27 @@ void Servos()
     }
 
 
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+  lcd.setCursor(0, 0);
+  lcd.print("Chosen letter:");
+  lcd.setCursor(14, 0);
+  
+
+if (Serial.available()) {
+  val = Serial.read(); 
+  while (Serial.available())
+  {
+   Serial.read(); 
+  }
+  var = val;
+  Servos();
+  lcd.print(var);
+
     delay(5000);
     servo1.write(down);
     servo2.write(down);
@@ -94,27 +115,29 @@ void Servos()
     servo5.write(down);
     servo6.write(down);
 
-}
-
-void loop() {
-  // put your main code here, to run repeatedly:
-
- if (Serial.available())   
-{
- val = Serial.read(); 
+  
 } 
 
  if (BTSerial.available() > 0) 
 {
   val = (char) BTSerial.read();
-}
-
+  while (BTSerial.available()) 
+  {
+  BTSerial.read();
+  }
   var = val;
   Servos(); 
-
-  lcd.setCursor(0, 0);
-  lcd.print("Chosen letter:");
-  lcd.setCursor(14, 0);
   lcd.print(var);
+
+    delay(5000);
+    servo1.write(down);
+    servo2.write(down);
+    servo3.write(down);
+    servo4.write(down);
+    servo5.write(down);
+    servo6.write(down);
+
+  }
+
 }
 
