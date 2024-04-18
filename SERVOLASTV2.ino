@@ -17,7 +17,8 @@ Servo servo5;
 Servo servo6;
 
 char val;
-char var = "";
+
+String var = "";
 
 int down = 0;
 int up = 90;
@@ -53,7 +54,7 @@ void setup() {
   servo6.write(down);
 }
 
-void Servos()
+void Servos(char val)
 {
      if (val == 'a' or val == 'b' or val == 'c' or val == 'd' or val == 'e' or val == 'f' or val == 'g' or val == 'h' or val == 'k' or val == 'l' or val == 'm' or val == 'n' or val == 'o' or val == 'p' or val == 'q' or val == 'r' or val == 'u' or val == 'v' or val == 'x' or val == 'y' or val == 'z')
     {
@@ -85,58 +86,59 @@ void Servos()
       servo6.write(up);
     }
 
+  lcd.print(val);
 
-
+    delay(3000);
+    servo1.write(down);
+    servo2.write(down);
+    servo3.write(down);
+    servo4.write(down);
+    servo5.write(down);
+    servo6.write(down);
+    delay(500);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
 
   lcd.setCursor(0, 0);
-  lcd.print("Chosen letter:");
-  lcd.setCursor(14, 0);
+  lcd.print("Recieved data:");
+  lcd.setCursor(0, 1);
   
 
 if (Serial.available()) {
-  val = Serial.read(); 
-  while (Serial.available())
-  {
-   Serial.read(); 
-  }
-  var = val;
-  Servos();
-  lcd.print(var);
 
-    delay(5000);
-    servo1.write(down);
-    servo2.write(down);
-    servo3.write(down);
-    servo4.write(down);
-    servo5.write(down);
-    servo6.write(down);
+  var = Serial.readString(); 
 
-  
+  for (int i = 0; i < var.length(); i++) {
+    val = var.charAt(i); // Get the character at index i
+    // Do something with the character, such as printing it
+    Serial.println(val);
+    Servos(val);
+    }
+    // Clear the receivedString variable for the next string
+    val = "";
+    delay(2000);
+    lcd.clear();
+
 } 
 
- if (BTSerial.available() > 0) 
+if (BTSerial.available() > 0) 
 {
-  val = (char) BTSerial.read();
-  while (BTSerial.available()) 
-  {
-  BTSerial.read();
-  }
-  var = val;
-  Servos(); 
-  lcd.print(var);
+  var = BTSerial.readString();
 
-    delay(5000);
-    servo1.write(down);
-    servo2.write(down);
-    servo3.write(down);
-    servo4.write(down);
-    servo5.write(down);
-    servo6.write(down);
+  Serial.println(val);
 
+  for (int i = 0; i < var.length(); i++) {
+    val = var.charAt(i); // Get the character at index i
+    // Do something with the character, such as printing it
+    Serial.println(val);
+    Servos(val); 
+    }
+    // Clear the receivedString variable for the next string
+    val = "";
+    delay(2000);
+    lcd.clear();
   }
 
 }
