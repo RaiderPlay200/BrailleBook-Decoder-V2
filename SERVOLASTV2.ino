@@ -20,8 +20,13 @@ char val;
 
 String var = "";
 
-int down = 0;
-int up = 90;
+int down = 90;
+int up = 68;
+int up2 = 70;
+int up3 = 63;
+int up4 = 114;
+int up5 = 114;
+int up6 = 124;
 
 
 
@@ -63,27 +68,27 @@ void Servos(char val)
 
     if (val == 'b' or val == 'f' or val == 'g' or val == 'h' or val == 'i' or val == 'j' or val == 'l' or val == 'p' or val == 'q' or val == 'r' or val == 's' or val == 't' or val == 'v' or val == 'w')
     {
-      servo2.write(up);
+      servo2.write(up2);
     }
 
     if (val == 'k' or val == 'l' or val == 'm' or val == 'n' or val == 'o' or val == 'p' or val == 'q' or val == 'r' or val == 's' or val == 't' or val == 'u' or val == 'v' or val == 'x' or val == 'y' or val == 'z')
     {
-      servo3.write(up);
+      servo3.write(up3);
     }
 
     if (val == 'c' or val == 'd' or val == 'f' or val == 'g' or val == 'i' or val == 'j' or val == 'm' or val == 'n' or val == 'p' or val == 'q' or val == 's' or val == 't' or val == 'w' or val == 'x' or val == 'y')
     {
-      servo4.write(up);
+      servo4.write(up4);
     }
 
     if (val == 'd' or val == 'e' or val == 'g' or val == 'h' or val == 'j' or val == 'n' or val == 'o' or val == 'q' or val == 'r' or val == 't' or val == 'w' or val == 'y' or val == 'z')
     {
-      servo5.write(up);
+      servo5.write(up5);
     }
 
     if (val == 'u' or val == 'v' or val == 'w' or val == 'x' or val == 'y' or val == 'z')
     {
-      servo6.write(up);
+      servo6.write(up6);
     }
 
   lcd.print(val);
